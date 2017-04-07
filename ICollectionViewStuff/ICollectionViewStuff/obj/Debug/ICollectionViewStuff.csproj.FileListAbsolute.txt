@@ -1,0 +1,15 @@
+D:\net resources\My Blog\ICollectionViewStuff\ICollectionViewStuff\bin\Debug\ICollectionViewStuff.exe
+D:\net resources\My Blog\ICollectionViewStuff\ICollectionViewStuff\bin\Debug\ICollectionViewStuff.pdb
+D:\net resources\My Blog\ICollectionViewStuff\ICollectionViewStuff\obj\Debug\ResolveAssemblyReference.cache
+D:\net resources\My Blog\ICollectionViewStuff\ICollectionViewStuff\obj\Debug\Window1.baml
+D:\net resources\My Blog\ICollectionViewStuff\ICollectionViewStuff\obj\Debug\Window1.g.cs
+D:\net resources\My Blog\ICollectionViewStuff\ICollectionViewStuff\obj\Debug\App.g.cs
+D:\net resources\My Blog\ICollectionViewStuff\ICollectionViewStuff\obj\Debug\ICollectionViewStuff_MarkupCompile.cache
+D:\net resources\My Blog\ICollectionViewStuff\ICollectionViewStuff\obj\Debug\ICollectionViewStuff.g.resources
+D:\net resources\My Blog\ICollectionViewStuff\ICollectionViewStuff\obj\Debug\ICollectionViewStuff.Properties.Resources.resources
+D:\net resources\My Blog\ICollectionViewStuff\ICollectionViewStuff\obj\Debug\ICollectionViewStuff.csproj.GenerateResource.Cache
+D:\net resources\My Blog\ICollectionViewStuff\ICollectionViewStuff\obj\Debug\ICollectionViewStuff.exe
+D:\net resources\My Blog\ICollectionViewStuff\ICollectionViewStuff\obj\Debug\ICollectionViewStuff.pdb
+D:\net resources\My Blog\ICollectionViewStuff\ICollectionViewStuff\obj\Debug\ICollectionViewStuff_MarkupCompile.lref
+C:\Users\mimoPC\Desktop\ICollectionViewStuff\ICollectionViewStuff\obj\Debug\ICollectionViewStuff.exe
+C:\Users\mimoPC\Desktop\ICollectionViewStuff\ICollectionViewStuff\obj\Debug\ICollectionViewStuff.pdb
