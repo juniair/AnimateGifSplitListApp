@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
@@ -30,7 +31,6 @@ namespace PrismUnityApp.AnimatedGifSplitList.ViewModels
             set { SetProperty(ref animatedGIF, value); }
         }
 
-        public ICommand SplitImageCommand { get; set; }
 
         private string fileName;
         public string FileName
@@ -38,13 +38,46 @@ namespace PrismUnityApp.AnimatedGifSplitList.ViewModels
             get { return fileName; }
             set { SetProperty(ref fileName, value); }
         }
+
+        private string frameName;
+        public string FrameName
+        {
+            get { return frameName; }
+            set { SetProperty(ref frameName, value); }
+        }
+
+        private string frameDuration;
+        public string FrameDuration
+        {
+            get { return frameDuration; }
+            set { SetProperty(ref frameDuration, value); }
+        }
+
+        public ICommand SplitImageCommand { get; set; }
+        public ICommand SelectedCommand { get; set; }
+
         public SplitImageListViewModel(IEngine engine)
         {
 
             FileName = "파일 선택";
             Engine = engine;
             SplitImageCommand = new DelegateCommand<object>(run);
+            SelectedCommand = new DelegateCommand<object[]>(OnItemSelected);
             ImageInfo = new ImageInfo();
+        }
+
+        private void OnItemSelected(object[] selectedItems)
+        {
+            if(selectedItems != null && selectedItems.Length > 0)
+            {
+                FrameInfo frame = selectedItems.FirstOrDefault() as FrameInfo;
+                if(frame != null)
+                {
+                    FrameName = string.Format("FramenName : {0}", frame.ImageName);
+                    FrameDuration = string.Format("FramenDuration : {0} ms", frame.Duration);
+                    
+                }
+            }
         }
 
         private void run(object obj)
@@ -63,11 +96,15 @@ namespace PrismUnityApp.AnimatedGifSplitList.ViewModels
                 {
                     ImageInfo.FrameList = tempList;
                     ImageInfo.LoopCount = tempLoop;
+                        
                 }
                 else
                 {
                     ImageInfo.LoopCount = "파일을 찾을 수 없습니다.";
                 }
+
+                FrameName = "FrameName : ";
+                FrameDuration = "FrameDuration : ";
             }
             
        
