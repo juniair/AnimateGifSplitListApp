@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
@@ -32,11 +33,22 @@ namespace PrismUnityApp.Infra
         public int Duration { get; set; }
     }
 
-    public class ImageInfo
+    public class ImageInfo : BindableBase
     {
-        public ObservableCollection<FrameInfo> FrameList { get; set; }
 
-        public string LoopCount { get; set; }
+        private ObservableCollection<FrameInfo> frameList;
+        public ObservableCollection<FrameInfo> FrameList
+        {
+            get { return frameList; }
+            set { SetProperty(ref frameList, value); }
+        }
+
+        private string loopCount;
+        public string LoopCount
+        {
+            get { return loopCount; }
+            set { SetProperty(ref loopCount, value); }
+        }
     }
 
     

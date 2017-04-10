@@ -56,3 +56,5 @@ C:\Users\mimoPC\Desktop\PrismUnityApp\PrismUnityApp.AnimatedGifSplitList\obj\Deb
 C:\Users\mimoPC\Desktop\PrismUnityApp\PrismUnityApp.AnimatedGifSplitList\obj\Debug\PrismUnityApp.AnimatedGifSplitList.csproj.GenerateResource.Cache
 C:\Users\mimoPC\Desktop\PrismUnityApp\PrismUnityApp.AnimatedGifSplitList\obj\Debug\PrismUnityApp.AnimatedGifSplitList.dll
 C:\Users\mimoPC\Desktop\PrismUnityApp\PrismUnityApp.AnimatedGifSplitList\obj\Debug\PrismUnityApp.AnimatedGifSplitList.pdb
+C:\Users\mimoPC\Desktop\PrismUnityApp\PrismUnityApp.AnimatedGifSplitList\bin\Debug\WpfAnimatedGif.dll
+C:\Users\mimoPC\Desktop\PrismUnityApp\PrismUnityApp.AnimatedGifSplitList\bin\Debug\WpfAnimatedGif.xml

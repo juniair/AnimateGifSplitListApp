@@ -17,19 +17,17 @@ namespace PrismUnityApp.AnimatedGifSplitList.ViewModels
         IEngine Engine { get; set; }
 
         private ImageInfo imageInfo;
-
-        private ObservableCollection<FrameInfo> frameList;
-        public ObservableCollection<FrameInfo> FrameList
+        public ImageInfo ImageInfo
         {
-            get { return frameList; }
-            set { SetProperty(ref frameList, value); }
+            get { return imageInfo; }
+            set { SetProperty(ref imageInfo, value); }
         }
 
-        private string loopCount;
-        public string LoopCount
+        private string animatedGIF;
+        public string AnimatedGIF
         {
-            get { return loopCount; }
-            set { SetProperty(ref loopCount, value); }
+            get { return animatedGIF; }
+            set { SetProperty(ref animatedGIF, value); }
         }
 
         public ICommand SplitImageCommand { get; set; }
@@ -46,7 +44,7 @@ namespace PrismUnityApp.AnimatedGifSplitList.ViewModels
             FileName = "파일 선택";
             Engine = engine;
             SplitImageCommand = new DelegateCommand<object>(run);
-            imageInfo = new ImageInfo();
+            ImageInfo = new ImageInfo();
         }
 
         private void run(object obj)
@@ -54,25 +52,25 @@ namespace PrismUnityApp.AnimatedGifSplitList.ViewModels
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.DefaultExt = "jpg";
             openFile.Filter = "Images Files(*.jpg; *.jpeg; *.gif; *.bmp; *.png)|*.jpg;*.jpeg;*.gif;*.bmp;*.png; *.psd";
-            openFile.ShowDialog();
-
-            FileName = openFile.SafeFileName;
-            
-            var tempList = Engine.Run(openFile.FileName);
-            string tempLoop = Engine.GetLoopCount(openFile.FileName);
-            if(tempList != null && tempLoop != null)
+            Nullable<bool> result = openFile.ShowDialog();
+            if(result == true)
             {
-                FrameList = tempList;
-                LoopCount = tempLoop;
+                FileName = openFile.SafeFileName;
+                AnimatedGIF = openFile.FileName;
+                var tempList = Engine.Run(AnimatedGIF);
+                string tempLoop = Engine.GetLoopCount(openFile.FileName);
+                if (tempList != null && tempLoop != null)
+                {
+                    ImageInfo.FrameList = tempList;
+                    ImageInfo.LoopCount = tempLoop;
+                }
+                else
+                {
+                    ImageInfo.LoopCount = "파일을 찾을 수 없습니다.";
+                }
             }
-            else
-            {
-                LoopCount = "파일을 찾을 수 없습니다.";
-            }
-
             
-
-            
+       
         }
     }
 }

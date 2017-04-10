@@ -60,3 +60,5 @@ C:\Users\mimoPC\Desktop\PrismUnityApp\PrismUnityApp\bin\Debug\Microsoft.Practice
 C:\Users\mimoPC\Desktop\PrismUnityApp\PrismUnityApp\bin\Debug\Prism.xml
 C:\Users\mimoPC\Desktop\PrismUnityApp\PrismUnityApp\bin\Debug\Prism.Unity.Wpf.xml
 C:\Users\mimoPC\Desktop\PrismUnityApp\PrismUnityApp\bin\Debug\Prism.Wpf.xml
+C:\Users\mimoPC\Desktop\PrismUnityApp\PrismUnityApp\bin\Debug\WpfAnimatedGif.dll
+C:\Users\mimoPC\Desktop\PrismUnityApp\PrismUnityApp\bin\Debug\WpfAnimatedGif.xml

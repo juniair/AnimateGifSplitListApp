@@ -1,17 +1,22 @@
 ﻿<UserControl x:Class="PrismUnityApp.AnimatedGifSplitList.Views.SplitImageList"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="7*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="15*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="11*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-
-        <Button Content="{Binding FileName}" Command="{Binding SplitImageCommand}" FontSize="32"/>
-        <ListView Grid.Row="1" ItemsSource="{Binding FrameList}" Grid.RowSpan="1" >
+        <Image gif:ImageBehavior.AnimatedSource="{Binding AnimatedGIF}" Grid.RowSpan="3" />
+        <Button Content="{Binding FileName}" Command="{Binding SplitImageCommand}" FontSize="16" Grid.Column="1"/>
+        <ListView ItemsSource="{Binding ImageInfo.FrameList}" Grid.Row="1" Grid.Column="1" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -22,9 +27,9 @@
                     <Border BorderBrush="#CCCCCC" BorderThickness="1">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100*"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="3*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
                             <Image Source="{Binding ImageSource}" VerticalAlignment="Center"></Image>
@@ -40,7 +45,7 @@
             </ListView.ItemTemplate>
 
         </ListView>
-        <TextBlock Text="{Binding LoopCount}" Grid.Row="2"/>
+        <TextBlock Text="{Binding ImageInfo.LoopCount}" Grid.Row="2" Grid.Column="1"/>
     </Grid>
 </UserControl>
 
