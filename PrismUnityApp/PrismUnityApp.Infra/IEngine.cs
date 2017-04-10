@@ -18,6 +18,7 @@ namespace PrismUnityApp.Infra
         /// <returns>프레임 정보가 있는 리스트</returns>
         ObservableCollection<FrameInfo> Run(string path);
 
+
         /// <summary>
         /// 
         /// </summary>

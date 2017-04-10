@@ -83,8 +83,9 @@ namespace PrismUnityApp.AnimatedGifSplitList.ViewModels
         private void run(object obj)
         {
             OpenFileDialog openFile = new OpenFileDialog();
+            
             openFile.DefaultExt = "jpg";
-            openFile.Filter = "Images Files(*.jpg; *.jpeg; *.gif; *.bmp; *.png)|*.jpg;*.jpeg;*.gif;*.bmp;*.png; *.psd";
+            openFile.Filter = "이미지(*.jpg; *.jpeg; *.gif; *.bmp; *.png)|*.jpg;*.jpeg;*.gif;*.bmp;*.png;*.psd";
             Nullable<bool> result = openFile.ShowDialog();
             if(result == true)
             {

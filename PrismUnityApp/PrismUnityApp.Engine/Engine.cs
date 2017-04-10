@@ -54,7 +54,7 @@ namespace PrismUnityApp.Engine
             
             imageStreamDataList = new List<byte[]>();
             imageInfoList = new List<FrameInfo>();
-
+            
             Image image;
             ImageFormat imageFormat;
 
@@ -114,7 +114,7 @@ namespace PrismUnityApp.Engine
                 imageInfoList.Add(new FrameInfo
                 {
                     ImageSource = imageStreamDataList[i],
-                    ImageName = string.Format("{0}__{1}", path, i),
+                    ImageName = string.Format("{0}__{1}", path.Split('.')[0], i),
                     Duration = frameDelay[i] * 10
                 });
             }
