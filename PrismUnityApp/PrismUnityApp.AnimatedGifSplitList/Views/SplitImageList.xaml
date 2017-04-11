@@ -16,7 +16,7 @@
             <RowDefinition Height="11*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Image gif:ImageBehavior.AnimatedSource="{Binding AnimatedGIF}" Grid.RowSpan="4" />
+        <Image gif:ImageBehavior.AnimatedSource="{Binding ImageInfo.ImageFilePath}" Grid.RowSpan="4" />
         <Button Content="{Binding FileName}" Command="{Binding SplitImageCommand}" FontSize="16" Grid.Column="1" />
         <ListView ItemsSource="{Binding ImageInfo.FrameList}" Grid.Column="1" Grid.Row="1" >
             <i:Interaction.Triggers>

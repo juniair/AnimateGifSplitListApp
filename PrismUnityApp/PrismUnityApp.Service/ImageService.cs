@@ -14,9 +14,6 @@ namespace PrismUnityApp.Service
     public class ImageService : IImageService
     {
         private const int UNKNOWN_LOOP_COUNT = -100;
-        
-
-
         private const int PROPERTY_TAG_FRAME_DELAY = 0x5100;
         // For an animated GIF image, the number of times to display the animation. 
         // A value of 0 specifies that the animation should be displayed infinitely
@@ -83,17 +80,6 @@ namespace PrismUnityApp.Service
             }
         }
 
-        private void ConfigurationFrameSaveDirectoryPath()
-        {
-            //if (ImageFilePath == null)
-            //{
-            //    LoadImage();
-            //}
-            if(Animated)
-            {
-                FolderDialog.ShowDialog();
-            }
-        }
 
         private void AnimatedImageSplit()
         {
@@ -196,6 +182,15 @@ namespace PrismUnityApp.Service
             }
         }
 
+
+        private void ConfigurationFrameSaveDirectoryPath()
+        {
+            if (Animated)
+            {
+                FolderDialog.ShowDialog();
+            }
+        }
+
         private void SaveFrame()
         {
             if(!FolderDialog.SelectedPath.Equals(""))
@@ -246,9 +241,6 @@ namespace PrismUnityApp.Service
                     });
                 }
             }
-            
-            
-
         }
 
         public ImageFile Build()
@@ -260,16 +252,16 @@ namespace PrismUnityApp.Service
             ConfigurationFrameSaveDirectoryPath();
             SaveFrame();
 
-            
+
 
             return new ImageFile
             {
+                ImageFilePath = FileDialog.FileName,
                 FrameList = new ObservableCollection<ImageFrame>(ImageFrameList),
                 LoopCount = this.LoopCount
             };
             
         }
-
-        
+                
     }
 }

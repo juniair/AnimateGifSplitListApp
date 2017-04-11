@@ -77,8 +77,6 @@ namespace PrismUnityApp.AnimatedGifSplitList.ViewModels
         private void run(object obj)
         {
             ImageInfo = Engine.Build();
-            
-       
         }
     }
 }
