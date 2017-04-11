@@ -62,3 +62,6 @@ C:\Users\mimoPC\Desktop\PrismUnityApp\PrismUnityApp\bin\Debug\Prism.Unity.Wpf.xm
 C:\Users\mimoPC\Desktop\PrismUnityApp\PrismUnityApp\bin\Debug\Prism.Wpf.xml
 C:\Users\mimoPC\Desktop\PrismUnityApp\PrismUnityApp\bin\Debug\WpfAnimatedGif.dll
 C:\Users\mimoPC\Desktop\PrismUnityApp\PrismUnityApp\bin\Debug\WpfAnimatedGif.xml
+D:\Github\AnimateGifSplitListApp\PrismUnityApp\PrismUnityApp\bin\Debug\PrismUnityApp.exe.config
+D:\Github\AnimateGifSplitListApp\PrismUnityApp\PrismUnityApp\obj\Debug\PrismUnityApp.exe
+D:\Github\AnimateGifSplitListApp\PrismUnityApp\PrismUnityApp\obj\Debug\PrismUnityApp.pdb
