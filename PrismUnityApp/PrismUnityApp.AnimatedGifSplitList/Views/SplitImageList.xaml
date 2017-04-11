@@ -58,8 +58,9 @@
         
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical">
             <Label Content="{Binding ImageInfo.LoopCount}"  />
-            <Label Content="{Binding FrameName}"/>
+            <Label Content="{Binding FrameName}" />
             <Label Content="{Binding FrameDuration}" />
+            
         </StackPanel>
     </Grid>
 </UserControl>

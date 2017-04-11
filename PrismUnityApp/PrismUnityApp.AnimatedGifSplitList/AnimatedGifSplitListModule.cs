@@ -5,7 +5,6 @@ using System;
 
 namespace PrismUnityApp.AnimatedGifSplitList
 {
-    [ModuleDependency("EngineModule")]
     public class AnimatedGifSplitListModule : IModule
     {
         IRegionManager _regionManager;
