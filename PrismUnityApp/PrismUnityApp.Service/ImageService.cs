@@ -97,137 +97,156 @@ namespace PrismUnityApp.Service
 
         private void AnimatedImageSplit()
         {
-
-            if(ImageFrameList.Count != 0)
+            if(!FileDialog.FileName.Equals(""))
             {
-                ImageFrameList.Clear();
-            }
-
-            if(FrameStreamDataList.Count != 0)
-            {
-                FrameStreamDataList.Clear();
-            }
-
-            Image = Image.FromFile(FileDialog.FileName);
-            Guid imageGuid = Image.RawFormat.Guid;
-
-            ImageFormat = null;
-
-            foreach(KeyValuePair<Guid, ImageFormat> pair in GuidToImageFormatMap)
-            {
-                if(imageGuid == pair.Key)
+                if (ImageFrameList.Count != 0)
                 {
-                    ImageFormat = pair.Value;
-                    break;
+                    ImageFrameList.Clear();
+                }
+
+                if (FrameStreamDataList.Count != 0)
+                {
+                    FrameStreamDataList.Clear();
+                }
+
+                Image = Image.FromFile(FileDialog.FileName);
+                Guid imageGuid = Image.RawFormat.Guid;
+
+                ImageFormat = null;
+
+                foreach (KeyValuePair<Guid, ImageFormat> pair in GuidToImageFormatMap)
+                {
+                    if (imageGuid == pair.Key)
+                    {
+                        ImageFormat = pair.Value;
+                        break;
+                    }
+                }
+
+                if (ImageFormat == null)
+                {
+                    throw new FileFormatException("해당 파일에 맞는 확장자가 존재하지 않습니다.");
+                }
+
+
+                Animated = ImageAnimator.CanAnimate(Image);
+
+                if (Animated)
+                {
+                    FrameCount = Image.GetFrameCount(FrameDimension.Time);
+                    PropertyItem frameDelayItem = Image.GetPropertyItem(PROPERTY_TAG_FRAME_DELAY);
+
+
+                    if (frameDelayItem != null)
+                    {
+                        byte[] values = frameDelayItem.Value;
+                        FrameDelay = new int[FrameCount];
+
+                        for (int i = 0; i < FrameCount; ++i)
+                        {
+                            FrameDelay[i] = values[i * 4] + 256 * values[i * 4 + 1] + 256 * 256 * values[i * 4 + 2] + 256 * 256 * 256 * values[i * 4 + 3] * 10;
+
+                            Image.SelectActiveFrame(FrameDimension.Time, i);
+                            using (MemoryStream memortStream = new MemoryStream())
+                            {
+                                Image.Save(memortStream, ImageFormat);
+                                FrameStreamDataList.Add(memortStream.ToArray());
+                            }
+                        }
+                    }
+                    else
+                    {
+                        FrameCount = 1;
+                        Image.SelectActiveFrame(FrameDimension.Time, 0);
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            Image.Save(ms, ImageFormat);
+                            FrameStreamDataList.Add(ms.ToArray());
+                        }
+                    }
+
+                }
+
+                if (FrameDelay == null)
+                {
+                    FrameDelay = new int[FrameCount];
                 }
             }
-
-            if(ImageFormat == null)
+        }
+        private void GetAnimatedImageLoopCount()
+        {
+            if (!FileDialog.FileName.Equals(""))
             {
-                throw new FileFormatException("해당 파일에 맞는 확장자가 존재하지 않습니다.");
-            }
-
-
-            Animated = ImageAnimator.CanAnimate(Image);
-
-            if(Animated)
-            {
-                FrameCount = Image.GetFrameCount(FrameDimension.Time);
-                PropertyItem frameDelayItem = Image.GetPropertyItem(PROPERTY_TAG_FRAME_DELAY);
-                
-
-                if (frameDelayItem != null)
+                if (Animated)
                 {
-                    byte[] values = frameDelayItem.Value;
-                    FrameDelay = new int[FrameCount];
-                    
-                    for(int i = 0; i < FrameCount; ++i)
+                    PropertyItem frameLoopItem = Image.GetPropertyItem(PROPERTY_TAG_FRAME_COUNT);
+                    if (frameLoopItem != null)
                     {
-                        FrameDelay[i] = values[i * 4] + 256 * values[i * 4 + 1] + 256 * 256 * values[i * 4 + 2] + 256 * 256 * 256 * values[i * 4 + 3] * 10;
-
-                        Image.SelectActiveFrame(FrameDimension.Time, i);
-                        using(MemoryStream memortStream = new MemoryStream())
+                        LoopCount = BitConverter.ToInt16(frameLoopItem.Value, 0);
+                        if (frameLoopItem.Value[0] != 0)
                         {
-                            Image.Save(memortStream, ImageFormat);
-                            FrameStreamDataList.Add(memortStream.ToArray());
+                            LoopCount++;
                         }
                     }
                 }
                 else
                 {
-                    FrameCount = 1;
-                    Image.SelectActiveFrame(FrameDimension.Time, 0);
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        Image.Save(ms, ImageFormat);
-                        FrameStreamDataList.Add(ms.ToArray());
-                    }
+                    LoopCount = -1;
                 }
-
-            }
-
-            if(FrameDelay == null)
-            {
-                FrameDelay = new int[FrameCount];
-            }            
-        }
-        private void GetAnimatedImageLoopCount()
-        {
-            if(Animated)
-            {
-                PropertyItem frameLoopItem = Image.GetPropertyItem(PROPERTY_TAG_FRAME_COUNT);
-                if(frameLoopItem != null)
-                {
-                    
-                    MessageBox.Show(BitConverter.ToInt16(frameLoopItem.Value, 0).ToString());
-                    LoopCount = BitConverter.ToInt16(frameLoopItem.Value, 0);
-                    if (frameLoopItem.Value[0] != 0)
-                    {
-                        LoopCount++;
-                    }
-                }
-            }
-            else
-            {
-                LoopCount = -1;
             }
         }
 
         private void SaveFrame()
         {
-
-            if (Animated)
+            if(!FolderDialog.SelectedPath.Equals(""))
             {
-                string framePath;
-                string frameName;
-                for (int i = 0; i < FrameCount; i++)
+                if (Animated)
                 {
-                    frameName = string.Format(@"{0}_frame[{1}].{2}", FileDialog.SafeFileName.Split('.')[0], i, ImageFormat.ToString());
-                    framePath = string.Format(@"{0}\\{1}", FolderDialog.SelectedPath, frameName);
-                    using (Image image = Image.FromStream(new MemoryStream(FrameStreamDataList[i])))
+                    string framePath;
+                    string frameName;
+                    for (int i = 0; i < FrameCount; i++)
                     {
-                        image.Save(framePath, ImageFormat);
-                    }
+                        frameName = string.Format(@"{0}_frame[{1}].{2}", FileDialog.SafeFileName.Split('.')[0], i, ImageFormat.ToString());
+                        framePath = string.Format(@"{0}\\{1}", FolderDialog.SelectedPath, frameName);
+                        using (Image image = Image.FromStream(new MemoryStream(FrameStreamDataList[i])))
+                        {
+                            image.Save(framePath, ImageFormat);
+                        }
 
+                        ImageFrameList.Add(new ImageFrame
+                        {
+                            Name = frameName,
+                            Path = framePath,
+                            Source = FrameStreamDataList[i],
+                            Duration = FrameDelay[i],
+                        });
+                    }
+                }
+                else
+                {
                     ImageFrameList.Add(new ImageFrame
                     {
-                        Name = frameName,
-                        Path = framePath,
-                        Source = FrameStreamDataList[i],
-                        Duration = FrameDelay[i],
+                        Name = FileDialog.SafeFileName,
+                        Path = FileDialog.FileName,
+                        Source = FrameStreamDataList[0],
+                        Duration = FrameDelay[0],
                     });
                 }
             }
             else
             {
-                ImageFrameList.Add(new ImageFrame
+                for (int i = 0; i < FrameCount; i++)
                 {
-                    Name = FileDialog.SafeFileName,
-                    Path = FileDialog.FileName,
-                    Source = FrameStreamDataList[0],
-                    Duration = FrameDelay[0],
-                });
+                    ImageFrameList.Add(new ImageFrame
+                    {
+                        Name = string.Format(@"{0}_frame[{1}].{2}", FileDialog.SafeFileName.Split('.')[0], i, ImageFormat.ToString()),
+                        Path = null,
+                        Source = FrameStreamDataList[i],
+                        Duration = FrameDelay[i],
+                    });
+                }
             }
+            
             
 
         }
