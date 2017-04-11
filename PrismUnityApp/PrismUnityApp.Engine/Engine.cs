@@ -70,14 +70,11 @@ namespace PrismUnityApp.Engine
 
             if(animated)
             {
-                
+                frameCount = image.GetFrameCount(FrameDimension.Time);
                 PropertyItem freamDelayItem = image.GetPropertyItem(PROPERTY_TAG_FRAME_DELAY);
-
-
 
                 if(freamDelayItem != null)
                 {
-                    frameCount = image.GetFrameCount(FrameDimension.Time);
                     byte[] values = freamDelayItem.Value;
                     frameDelay = new int[frameCount];
 
@@ -94,7 +91,6 @@ namespace PrismUnityApp.Engine
                         }
                     }
                 }
-
             }
             else
             {
@@ -142,7 +138,7 @@ namespace PrismUnityApp.Engine
             {
                 return null;
             }
-
+            MessageBox.Show(imageFormat.ToString());
             animated = ImageAnimator.CanAnimate(image);
 
             if(animated)

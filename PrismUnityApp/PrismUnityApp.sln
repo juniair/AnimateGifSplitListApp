@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismUnityApp", "PrismUnityApp\PrismUnityApp.csproj", "{99C9E82C-C594-446D-AA59-8FFBC43AD226}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismUnityApp.Infra", "PrismUnityApp.Infra\PrismUnityApp.Infra.csproj", "{BA9F6723-E5F2-42F1-B42C-44037FEFDA64}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismUnityApp.Engine", "PrismUnityApp.Engine\PrismUnityApp.Engine.csproj", "{848740E3-7D2D-4AB1-9AC9-E755C77B9BB1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismUnityApp.AnimatedGifSplitList", "PrismUnityApp.AnimatedGifSplitList\PrismUnityApp.AnimatedGifSplitList.csproj", "{AB8B448C-DD74-4D60-A041-3E5D03A32180}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismUnityApp.Service", "PrismUnityApp.Service\PrismUnityApp.Service.csproj", "{4D8DFC73-B0DD-46B4-9721-F90526DEB48D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +19,14 @@ Global
 		{99C9E82C-C594-446D-AA59-8FFBC43AD226}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99C9E82C-C594-446D-AA59-8FFBC43AD226}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99C9E82C-C594-446D-AA59-8FFBC43AD226}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BA9F6723-E5F2-42F1-B42C-44037FEFDA64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BA9F6723-E5F2-42F1-B42C-44037FEFDA64}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA9F6723-E5F2-42F1-B42C-44037FEFDA64}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA9F6723-E5F2-42F1-B42C-44037FEFDA64}.Release|Any CPU.Build.0 = Release|Any CPU
-		{848740E3-7D2D-4AB1-9AC9-E755C77B9BB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{848740E3-7D2D-4AB1-9AC9-E755C77B9BB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{848740E3-7D2D-4AB1-9AC9-E755C77B9BB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{848740E3-7D2D-4AB1-9AC9-E755C77B9BB1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AB8B448C-DD74-4D60-A041-3E5D03A32180}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AB8B448C-DD74-4D60-A041-3E5D03A32180}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB8B448C-DD74-4D60-A041-3E5D03A32180}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB8B448C-DD74-4D60-A041-3E5D03A32180}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D8DFC73-B0DD-46B4-9721-F90526DEB48D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D8DFC73-B0DD-46B4-9721-F90526DEB48D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D8DFC73-B0DD-46B4-9721-F90526DEB48D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D8DFC73-B0DD-46B4-9721-F90526DEB48D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

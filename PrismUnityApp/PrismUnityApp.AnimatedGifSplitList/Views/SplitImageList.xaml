@@ -42,8 +42,8 @@
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
-                            <Image Source="{Binding ImageSource}" VerticalAlignment="Center"></Image>
-                            <Label Content="{Binding ImageName}" FontSize="14" Grid.Column="1" FontWeight="Bold"></Label>
+                            <Image Source="{Binding Source}" VerticalAlignment="Center"></Image>
+                            <Label Content="{Binding Name}" FontSize="14" Grid.Column="1" FontWeight="Bold"></Label>
                             <StackPanel  Grid.Row="1" Orientation="Horizontal" Grid.Column="2">
                                 <Label Content="{Binding Duration}"></Label>
                                 <Label Content="ms"></Label>

@@ -128,9 +128,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PrismUnityApp.Infra\PrismUnityApp.Infra.csproj">
-      <Project>{ba9f6723-e5f2-42f1-b42c-44037fefda64}</Project>
-      <Name>PrismUnityApp.Infra</Name>
+    <ProjectReference Include="..\PrismUnityApp.Service\PrismUnityApp.Service.csproj">
+      <Project>{4d8dfc73-b0dd-46b4-9721-f90526deb48d}</Project>
+      <Name>PrismUnityApp.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
