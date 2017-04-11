@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using Ookii.Dialogs.Wpf;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,6 +26,9 @@ namespace PrismUnityApp.Infra
         /// <param name="path">파일 위치</param>
         /// <returns>반복 횟수(-1 : 파일이 존재 하지 않음, 0 : 무한 반복, n : n번 반복</returns>
         string GetLoopCount(string path);
+
+        
+
     }
 
     public class FrameInfo
@@ -50,7 +54,5 @@ namespace PrismUnityApp.Infra
             get { return loopCount; }
             set { SetProperty(ref loopCount, value); }
         }
-    }
-
-    
+    }    
 }
