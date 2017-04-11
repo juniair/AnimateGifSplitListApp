@@ -202,6 +202,7 @@ namespace PrismUnityApp.Service
                 string frameName;
                 for (int i = 0; i < FrameCount; i++)
                 {
+                    a
                     frameName = string.Format(@"{0}_frame[{1}].{2}", FileDialog.SafeFileName.Split('.')[0], i, ImageFormat.ToString());
                     framePath = string.Format(@"{0}\\{1}", FolderDialog.SelectedPath, frameName);
                     using (Image image = Image.FromStream(new MemoryStream(FrameStreamDataList[i])))
